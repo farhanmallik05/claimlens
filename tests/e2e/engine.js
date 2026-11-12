@@ -142,8 +142,10 @@ function forecast(policy, bill) {
     let payable = eligible;
     if (isOverCap) {
       if (l.category === 'room') {
-        const isIcu = (l.id && l.id.toLowerCase().includes('icu')) ||
-                      (l.label && l.label.toLowerCase().includes('icu'));
+        const isIcu = l.isIcu === true ||
+                      l.category === 'icu' ||
+                      (l.id && l.id.toLowerCase().includes('icu')) ||
+                      (l.label && /icu|ccu|intensive care|critical care/i.test(l.label));
         if (isIcu) {
           // ICU stay is exempt from room rent cap per statutory guidelines
           payable = eligible;

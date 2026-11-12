@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { ENGINE_VERSION, getEngineHealth, Bill, Policy } from '../src/index';
+import {
+  ENGINE_VERSION,
+  getEngineHealth,
+  Bill,
+  Policy,
+  calculateForecast,
+  resolveCap,
+} from '../src/index';
 
 describe('Engine Baseline Smoke Tests', () => {
   it('exports correct engine version', () => {
@@ -38,10 +45,27 @@ describe('Engine Baseline Smoke Tests', () => {
       planName: 'Demo Plan',
       sumInsured: 500000,
       priorClaimsPaid: 0,
-      clauses: {},
+      clauses: {
+        'SP-3.1': {
+          page: 3,
+          heading: 'Room Rent Limit',
+          text: 'Room rent is capped at 1% of Sum Insured per day.',
+        },
+      },
+      roomRent: {
+        mode: 'pctSI',
+        value: 1,
+        clauseId: 'SP-3.1',
+      },
     };
 
     expect(sampleBill.lines.length).toBe(1);
     expect(samplePolicy.sumInsured).toBe(500000);
+    expect(resolveCap(samplePolicy)).toBe(5000);
+
+    const result = calculateForecast(samplePolicy, sampleBill);
+    expect(result.billed).toBe(10000);
+    expect(result.insurerPays).toBe(10000);
+    expect(result.youPay).toBe(0);
   });
 });
