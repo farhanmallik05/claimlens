@@ -9,7 +9,16 @@ export function ProgressRule() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sceneIds = ['scene-1', 'scene-2', 'scene-3', 'scene-4'];
+      const sceneIds = [
+        'scene-1',
+        'scene-2',
+        'scene-3',
+        'scene-4',
+        'scene-5',
+        'scene-6',
+        'scene-7',
+        'scene-8',
+      ];
       const scrollPosition = window.scrollY + 200;
 
       for (const id of sceneIds) {
@@ -31,10 +40,14 @@ export function ProgressRule() {
   }, []);
 
   const navLinks = [
-    { id: 'scene-1', label: '01 / Receipt Reveal' },
-    { id: 'scene-2', label: '02 / The Gap' },
-    { id: 'scene-3', label: '03 / The Ripple' },
-    { id: 'scene-4', label: '04 / Waterfall' },
+    { id: 'scene-1', label: '01 / Receipt', short: '01' },
+    { id: 'scene-2', label: '02 / Gap', short: '02' },
+    { id: 'scene-3', label: '03 / Ripple', short: '03' },
+    { id: 'scene-4', label: '04 / Waterfall', short: '04' },
+    { id: 'scene-5', label: '05 / How & Clauses', short: '05' },
+    { id: 'scene-6', label: '06 / Advisor', short: '06' },
+    { id: 'scene-7', label: '07 / Appeal', short: '07' },
+    { id: 'scene-8', label: '08 / Summary', short: '08' },
   ];
 
   return (
@@ -52,7 +65,7 @@ export function ProgressRule() {
         </div>
 
         {/* Scene Navigation Links */}
-        <nav className="flex items-center gap-1 sm:gap-2">
+        <nav className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto max-w-full py-1">
           {navLinks.map((link) => {
             const isActive = activeScene === link.id;
             return (
@@ -60,13 +73,14 @@ export function ProgressRule() {
                 key={link.id}
                 href={`#${link.id}`}
                 className={cn(
-                  'px-2 py-1 rounded transition-colors text-[11px] sm:text-xs select-none',
+                  'px-2 py-1 rounded transition-colors text-[11px] sm:text-xs select-none whitespace-nowrap min-h-[36px] sm:min-h-[28px] flex items-center',
                   isActive
                     ? 'bg-ink text-paper font-semibold shadow-xs'
                     : 'text-ink-2 hover:text-ink hover:bg-paper-2'
                 )}
               >
-                {link.label}
+                <span className="hidden md:inline">{link.label}</span>
+                <span className="md:hidden">{link.short}</span>
               </a>
             );
           })}
