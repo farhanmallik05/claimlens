@@ -1,0 +1,135 @@
+{
+  "tiers": [
+    {
+      "id": "general",
+      "name": "General Ward",
+      "ratePerDay": 2000,
+      "days": 5,
+      "billed": 120000,
+      "insurerPays": 116000,
+      "youPay": 4000,
+      "deductions": {
+        "roomCut": 0,
+        "professionalCut": 0,
+        "nonPayable": 4000,
+        "copay": 0,
+        "siClamp": 0
+      },
+      "expectedLines": {
+        "room": { "billed": 10000, "payable": 10000, "deducted": 0 },
+        "surgeon": { "billed": 30000, "payable": 30000, "deducted": 0 },
+        "ot": { "billed": 20000, "payable": 20000, "deducted": 0 },
+        "nursing": { "billed": 10000, "payable": 10000, "deducted": 0 },
+        "medicines": { "billed": 22000, "payable": 22000, "deducted": 0 },
+        "consumables": { "billed": 8000, "payable": 4000, "deducted": 4000 },
+        "lab": { "billed": 12000, "payable": 12000, "deducted": 0 },
+        "imaging": { "billed": 8000, "payable": 8000, "deducted": 0 }
+      }
+    },
+    {
+      "id": "semi-private",
+      "name": "Semi-Private Room",
+      "ratePerDay": 3500,
+      "days": 5,
+      "billed": 127500,
+      "insurerPays": 123500,
+      "youPay": 4000,
+      "deductions": {
+        "roomCut": 0,
+        "professionalCut": 0,
+        "nonPayable": 4000,
+        "copay": 0,
+        "siClamp": 0
+      },
+      "expectedLines": {
+        "room": { "billed": 17500, "payable": 17500, "deducted": 0 },
+        "surgeon": { "billed": 30000, "payable": 30000, "deducted": 0 },
+        "ot": { "billed": 20000, "payable": 20000, "deducted": 0 },
+        "nursing": { "billed": 10000, "payable": 10000, "deducted": 0 },
+        "medicines": { "billed": 22000, "payable": 22000, "deducted": 0 },
+        "consumables": { "billed": 8000, "payable": 4000, "deducted": 4000 },
+        "lab": { "billed": 12000, "payable": 12000, "deducted": 0 },
+        "imaging": { "billed": 8000, "payable": 8000, "deducted": 0 }
+      }
+    },
+    {
+      "id": "single-ac",
+      "name": "Single AC (At Cap)",
+      "ratePerDay": 5000,
+      "days": 5,
+      "billed": 135000,
+      "insurerPays": 131000,
+      "youPay": 4000,
+      "deductions": {
+        "roomCut": 0,
+        "professionalCut": 0,
+        "nonPayable": 4000,
+        "copay": 0,
+        "siClamp": 0
+      },
+      "expectedLines": {
+        "room": { "billed": 25000, "payable": 25000, "deducted": 0 },
+        "surgeon": { "billed": 30000, "payable": 30000, "deducted": 0 },
+        "ot": { "billed": 20000, "payable": 20000, "deducted": 0 },
+        "nursing": { "billed": 10000, "payable": 10000, "deducted": 0 },
+        "medicines": { "billed": 22000, "payable": 22000, "deducted": 0 },
+        "consumables": { "billed": 8000, "payable": 4000, "deducted": 4000 },
+        "lab": { "billed": 12000, "payable": 12000, "deducted": 0 },
+        "imaging": { "billed": 8000, "payable": 8000, "deducted": 0 }
+      }
+    },
+    {
+      "id": "deluxe",
+      "name": "Deluxe Room (Raju Verma)",
+      "ratePerDay": 8000,
+      "days": 5,
+      "billed": 150000,
+      "insurerPays": 108500,
+      "youPay": 41500,
+      "deductions": {
+        "roomCut": 15000,
+        "professionalCut": 22500,
+        "nonPayable": 4000,
+        "copay": 0,
+        "siClamp": 0
+      },
+      "expectedLines": {
+        "room": { "billed": 40000, "payable": 25000, "deducted": 15000 },
+        "surgeon": { "billed": 30000, "payable": 18750, "deducted": 11250 },
+        "ot": { "billed": 20000, "payable": 12500, "deducted": 7500 },
+        "nursing": { "billed": 10000, "payable": 6250, "deducted": 3750 },
+        "medicines": { "billed": 22000, "payable": 22000, "deducted": 0 },
+        "consumables": { "billed": 8000, "payable": 4000, "deducted": 4000 },
+        "lab": { "billed": 12000, "payable": 12000, "deducted": 0 },
+        "imaging": { "billed": 8000, "payable": 8000, "deducted": 0 }
+      }
+    },
+    {
+      "id": "suite",
+      "name": "Executive Suite",
+      "ratePerDay": 12000,
+      "days": 5,
+      "billed": 170000,
+      "insurerPays": 95999,
+      "youPay": 74001,
+      "deductions": {
+        "roomCut": 35000,
+        "professionalCut": 35001,
+        "nonPayable": 4000,
+        "copay": 0,
+        "siClamp": 0
+      },
+      "noteOnMath": "Deterministic line-level floor truncation yields: Surgeon 12500 (cut 17500), OT 8333 (cut 11667), Nursing 4166 (cut 5834). Total prof payable: 24999 (cut 35001). Total insurer: 95999. Invariant FR-7 holds: 170000 - 95999 == 74001.",
+      "expectedLines": {
+        "room": { "billed": 60000, "payable": 25000, "deducted": 35000 },
+        "surgeon": { "billed": 30000, "payable": 12500, "deducted": 17500 },
+        "ot": { "billed": 20000, "payable": 8333, "deducted": 11667 },
+        "nursing": { "billed": 10000, "payable": 4166, "deducted": 5834 },
+        "medicines": { "billed": 22000, "payable": 22000, "deducted": 0 },
+        "consumables": { "billed": 8000, "payable": 4000, "deducted": 4000 },
+        "lab": { "billed": 12000, "payable": 12000, "deducted": 0 },
+        "imaging": { "billed": 8000, "payable": 8000, "deducted": 0 }
+      }
+    }
+  ]
+}

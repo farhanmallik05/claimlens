@@ -1,0 +1,145 @@
+{
+  "scenario": "sum_insured_clamp",
+  "name": "Scenario S3: Sum Insured Exhaustion Clamp",
+  "policy": {
+    "id": "demo-small-si",
+    "insurer": "Demo Assure",
+    "planName": "SafeCare Basic (Demo)",
+    "sumInsured": 50000,
+    "sumInsuredClauseId": "SP-2.1",
+    "roomRent": {
+      "mode": "fixedPerDay",
+      "value": 5000,
+      "clauseId": "SP-3.1"
+    },
+    "proportionate": {
+      "enabled": true,
+      "appliesTo": [
+        "professional"
+      ],
+      "clauseId": "SP-3.2"
+    },
+    "nonPayable": {
+      "clauseId": "SP-4.1"
+    },
+    "copay": {
+      "pct": 0,
+      "order": "afterCap",
+      "clauseId": "SP-5.1"
+    },
+    "priorClaimsPaid": 0,
+    "clauses": {
+      "SP-2.1": {
+        "page": 1,
+        "heading": "Sum Insured Limit",
+        "text": "The maximum amount payable in a policy year is the Sum Insured shown in the Schedule."
+      },
+      "SP-3.1": {
+        "page": 1,
+        "heading": "Room Rent Limit",
+        "text": "Room rent is payable up to ₹5,000 per day."
+      },
+      "SP-3.2": {
+        "page": 1,
+        "heading": "Proportionate Deduction",
+        "text": "Proportionate deduction applies on professional charges when room limit is exceeded."
+      },
+      "SP-4.1": {
+        "page": 2,
+        "heading": "Non-Payable Items",
+        "text": "Annexure A non-payable items are excluded."
+      },
+      "SP-5.1": {
+        "page": 2,
+        "heading": "Co-payment",
+        "text": "No co-payment applies."
+      }
+    }
+  },
+  "bill": {
+    "id": "bill-si-001",
+    "patientAlias": "Raju Verma",
+    "hospital": "Manipal Hospital",
+    "days": 5,
+    "lines": [
+      {
+        "id": "line-room",
+        "category": "room",
+        "label": "Room — Deluxe",
+        "qty": 5,
+        "rate": 8000,
+        "amount": 40000
+      },
+      {
+        "id": "line-surgeon",
+        "category": "professional",
+        "label": "Surgeon Fee",
+        "qty": 1,
+        "rate": 30000,
+        "amount": 30000
+      },
+      {
+        "id": "line-ot",
+        "category": "professional",
+        "label": "Operation Theatre",
+        "qty": 1,
+        "rate": 20000,
+        "amount": 20000
+      },
+      {
+        "id": "line-nursing",
+        "category": "professional",
+        "label": "Nursing Care",
+        "qty": 5,
+        "rate": 2000,
+        "amount": 10000
+      },
+      {
+        "id": "line-medicines",
+        "category": "pharmacy",
+        "label": "Medicines",
+        "qty": 1,
+        "rate": 22000,
+        "amount": 22000
+      },
+      {
+        "id": "line-consumables",
+        "category": "pharmacy",
+        "label": "Consumables & Admin",
+        "qty": 1,
+        "rate": 8000,
+        "amount": 8000,
+        "nonPayable": {
+          "amount": 4000,
+          "reason": "Administrative and registration charges, disposable gloves"
+        }
+      },
+      {
+        "id": "line-lab",
+        "category": "diagnostics",
+        "label": "Lab Investigations",
+        "qty": 1,
+        "rate": 12000,
+        "amount": 12000
+      },
+      {
+        "id": "line-imaging",
+        "category": "diagnostics",
+        "label": "Imaging (X-Ray / MRI)",
+        "qty": 1,
+        "rate": 8000,
+        "amount": 8000
+      }
+    ]
+  },
+  "expected": {
+    "billed": 150000,
+    "preClampPayable": 108500,
+    "availableSI": 50000,
+    "insurerPays": 50000,
+    "youPay": 100000,
+    "totalClamped": 58500,
+    "ruleId": "SI_CLAMP",
+    "clauseId": "SP-2.1"
+  }
+}
