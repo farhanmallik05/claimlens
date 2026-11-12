@@ -15,7 +15,7 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "ClaimLens — Shortfall Forecaster & Appeal Architect",
   description:
-    "Your shortfall, forecast before discharge, with the clause behind every rupee. Interactive healthcare claim audit for CodeQuest 2026.",
+    "Your shortfall, forecast before discharge, with the clause behind every rupee. Interactive healthcare claim audit for 2026.",
   authors: [{ name: "ClaimLens Team" }],
   icons: {
     icon: "/favicon.ico",

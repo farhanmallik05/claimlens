@@ -1,3 +1,10 @@
+[project]
+name = "claimlens-api"
+version = "1.0.0"
+description = "ClaimLens FastAPI Agent Gateway & SSE Pipeline"
+readme = "README.md"
+requires-python = ">=3.11"
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]

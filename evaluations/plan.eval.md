@@ -15,7 +15,7 @@
 - **Project Stage:** `Concept` / Master Plan Index & Orchestration Blueprint.
 - **Team Context:** `Solo` developer utilizing three AI-agent execution lanes (`plan.md:40`).
 - **Information Available:**
-  - Header Metadata: Event (CodeQuest 2026), Author (Farhan Mallik), Timeline (Wed 11 Nov to Sun 15 Nov 2026, target 6 PM IST), One-line pitch (*"Your shortfall, forecast before discharge, with the clause behind every rupee"*).
+  - Header Metadata: Event (2026), Author (Farhan Mallik), Timeline (Wed 11 Nov to Sun 15 Nov 2026, target 6 PM IST), One-line pitch (*"Your shortfall, forecast before discharge, with the clause behind every rupee"*).
   - Master Navigation Index: 14-document catalog mapping every planning file (`idea.md`, `strategy.md`, `prd.md`, `flows.md`, `design.md`, `trd.md`, `adrs.md`, `schedule.md`, `prompts.md`, `content.md`, `qa.md`, `risks.md`, `appendix.md`) to its functional purpose and reading context.
   - Standing Workflow Rules: Spec-first → local-first dev → deterministic core → every claim backed by built/measured evidence.
   - Explicit Assumptions Table (A1–A7) with contingency paths: A1 (nothing built yet), A2 (solo + 3 lanes), A3 (cold link + ≤2 min video), A4 (synthetic docs, zero signup), A5 (TS engine + Python port), A6 (swappable LiteLLM vision model), A7 (unknown rubric).
