@@ -12,7 +12,7 @@
 ## 1. Context Declaration
 
 - **Evaluated Target:** `plan/strategy.md` (Lines 1–60, 3,278 bytes).
-- **Project Stage:** `Concept` / Hackathon Competition Strategy (CodeQuest 2026).
+- **Project Stage:** `Concept` / Hackathon Competition Strategy (2026).
 - **Team Context:** `Solo` developer utilizing three parallel AI-agent execution lanes (`strategy.md:49-58`).
 - **Information Available:**
   - Section 2.1: The 2-minute judge path table broken down into five distinct time slices (0–5s Wow 1, 5–25s Scene 2, 25–70s Wow 2, 70–95s Wow 3, 95–120s Scenes 5–8) with emotional targets ("I understand this instantly", "It's actually working", "Feasible, differentiated, finished").
@@ -68,7 +68,7 @@
   - The `Weight` column is completely unpopulated (`*fill in*` across all rows, lines 28–32). Failing to discover and record actual judging weights prevents rational allocation of development polish time.
   - Lacks guidance on how to de-prioritize scenes if certain criteria carry negligible weight.
 - **+2 Points Action Plan:**
-  1. Complete task V-2: extract and record the exact official CodeQuest 2026 rubric weights into the table.
+  1. Complete task V-2: extract and record the exact official 2026 rubric weights into the table.
   2. Re-sequence the scene implementation backlog so that scenes corresponding to the highest-weighted criteria receive first-pass completion.
 
 ---

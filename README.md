@@ -189,4 +189,4 @@ ClaimLens grounds its rules and appeal letters in official Indian regulatory sta
 
 ---
 
-**CodeQuest 2026** · *ClaimLens: Know before you're discharged.*
+**2026** · *ClaimLens: Know before you're discharged.*

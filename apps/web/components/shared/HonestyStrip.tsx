@@ -22,7 +22,7 @@ export function HonestyStrip() {
           </span>
           <span>·</span>
           <span className="text-ink-2">
-            CodeQuest 2026 Showcase
+            2026 Showcase
           </span>
           <span>·</span>
           <span className="text-green font-medium">

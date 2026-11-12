@@ -12,7 +12,7 @@
 ## 1. Context Declaration
 
 - **Evaluated Target:** `plan/idea.md` (Lines 1–70, 3,485 bytes).
-- **Project Stage:** `Concept` (Hackathon Idea Submission for CodeQuest 2026).
+- **Project Stage:** `Concept` (Hackathon Idea Submission for 2026).
 - **Team Context:** `Solo` (per `plan.md:40` operating with AI-agent lanes).
 - **Information Available:**
   - Section 1.1 Problem: Core problem narrative (discharge shortfall discovery), 3 root causes (dense wordings, post-facto discovery, friction-heavy appeals), and FY24 headline statistics table (57 crore lives, ₹26,038 cr disallowed, 71% paid out) cited to IRDAI Annual Report 2023-24 via PTI/Business Standard, with a verification callout note (qa.md V-1).

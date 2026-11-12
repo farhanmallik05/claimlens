@@ -60,7 +60,7 @@ export function ProgressRule() {
           </a>
           <span className="text-ink-2/40 hidden sm:inline">|</span>
           <span className="text-ink-2 hidden sm:inline">
-            Engine v{ENGINE_VERSION} · CodeQuest 2026
+            Engine v{ENGINE_VERSION} · 2026
           </span>
         </div>
 
