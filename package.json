@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "pnpm --filter web dev",
     "build": "pnpm --filter @claimlens/engine build && pnpm --filter web build",
-    "test": "node scripts/run_e2e_suite.js",
+    "test": "node scripts/validate_metrics.js && node scripts/run_e2e_suite.js",
     "test:e2e": "node scripts/run_e2e_suite.js",
-    "test:all": "node scripts/run_e2e_suite.js",
+    "test:invariants": "node scripts/verify_challenger_invariants.js",
+    "test:all": "node scripts/validate_metrics.js && node scripts/run_e2e_suite.js && node scripts/verify_challenger_invariants.js && pnpm --filter @claimlens/engine test",
     "test:tiers": "node --test tests/e2e/*.test.js",
     "test:engine": "pnpm --filter @claimlens/engine test",
+    "validate:metrics": "node scripts/validate_metrics.js",
     "lint": "pnpm --filter web lint",
     "typecheck": "pnpm --filter @claimlens/engine typecheck && pnpm --filter web typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,css,md}\""
