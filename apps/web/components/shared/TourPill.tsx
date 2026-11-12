@@ -9,7 +9,16 @@ export function TourPill() {
   const [tourStep, setTourStep] = useState(0);
   const tourTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const scenes = ['scene-1', 'scene-2', 'scene-3', 'scene-4'];
+  const scenes = [
+    'scene-1',
+    'scene-2',
+    'scene-3',
+    'scene-4',
+    'scene-5',
+    'scene-6',
+    'scene-7',
+    'scene-8',
+  ];
 
   const stopTour = useCallback(() => {
     if (tourTimerRef.current) {
@@ -21,7 +30,16 @@ export function TourPill() {
   }, []);
 
   const advanceTour = useCallback((stepIndex: number) => {
-    const sceneTargets = ['scene-1', 'scene-2', 'scene-3', 'scene-4'];
+    const sceneTargets = [
+      'scene-1',
+      'scene-2',
+      'scene-3',
+      'scene-4',
+      'scene-5',
+      'scene-6',
+      'scene-7',
+      'scene-8',
+    ];
     if (stepIndex >= sceneTargets.length) {
       if (tourTimerRef.current) {
         clearTimeout(tourTimerRef.current);
@@ -96,6 +114,7 @@ export function TourPill() {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <button
+        id="tour-pill-button"
         type="button"
         onClick={startTour}
         className={cn(

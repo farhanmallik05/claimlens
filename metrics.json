@@ -1,0 +1,36 @@
+{
+  "engine": {
+    "unitTestsPassed": 22,
+    "unitTestsTotal": 22,
+    "e2eTestsPassed": 148,
+    "e2eTestsTotal": 148,
+    "floatLeakage": 0,
+    "executionTimeMs": "<1ms",
+    "accuracyRupeeMatch": "100%"
+  },
+  "provenance": {
+    "deductionsCitedPct": "100%",
+    "clauseIntegrityGuaranteed": true,
+    "enforcedByCi": true
+  },
+  "performance": {
+    "engineLatencyMs": "<1ms",
+    "forecastTurnaroundSec": "<60s",
+    "firstLoadJsKb": 87.2,
+    "lighthouseDesktop": 96,
+    "lighthouseMobile": 89
+  },
+  "industryData": {
+    "coveredLivesCrores": 57,
+    "disallowedAmountCrores": 26038,
+    "claimedValuePaidPct": 71,
+    "source": "IRDAI Annual Report 2023-24 (Table 4.8)"
+  },
+  "impact": {
+    "sampleFamilies": 100000,
+    "avgSavingPerFamilyRupees": 10000,
+    "potentialEconomicImpactCrores": 100,
+    "isIllustrative": true
+  }
+}
+
