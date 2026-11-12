@@ -1,0 +1,87 @@
+{
+  "claimRef": "CLM-DEMO-001",
+  "policyId": "demo-001",
+  "billId": "bill-raju-001",
+  "patientAlias": "Raju's Mother (Raju Verma)",
+  "totalBilled": 150000,
+  "insurerPaid": 98750,
+  "shortfallCharged": 51250,
+  "settlementLines": [
+    {
+      "lineId": "line-room",
+      "billed": 40000,
+      "paid": 25000,
+      "deducted": 15000,
+      "adjudicationReason": "Room rent capped at ₹5,000/day as per Clause SP-3.1"
+    },
+    {
+      "lineId": "line-surgeon",
+      "billed": 30000,
+      "paid": 18750,
+      "deducted": 11250,
+      "adjudicationReason": "Proportionate deduction (62.5%) applied as per Clause SP-3.2"
+    },
+    {
+      "lineId": "line-ot",
+      "billed": 20000,
+      "paid": 12500,
+      "deducted": 7500,
+      "adjudicationReason": "Proportionate deduction (62.5%) applied as per Clause SP-3.2"
+    },
+    {
+      "lineId": "line-nursing",
+      "billed": 10000,
+      "paid": 6250,
+      "deducted": 3750,
+      "adjudicationReason": "Proportionate deduction (62.5%) applied as per Clause SP-3.2"
+    },
+    {
+      "lineId": "line-medicines",
+      "billed": 22000,
+      "paid": 13750,
+      "deducted": 8250,
+      "adjudicationReason": "Proportionate deduction (62.5%) applied (DISPUTED — Violates SP-3.3)"
+    },
+    {
+      "lineId": "line-consumables",
+      "billed": 8000,
+      "paid": 2500,
+      "deducted": 5500,
+      "adjudicationReason": "₹4,000 non-payable Annexure A; remainder ₹4,000 subjected to 62.5% proportionate cut ₹1,500 (DISPUTED — Violates SP-3.3)"
+    },
+    {
+      "lineId": "line-lab",
+      "billed": 12000,
+      "paid": 12000,
+      "deducted": 0,
+      "adjudicationReason": "Payable in full"
+    },
+    {
+      "lineId": "line-imaging",
+      "billed": 8000,
+      "paid": 8000,
+      "deducted": 0,
+      "adjudicationReason": "Payable in full"
+    }
+  ],
+  "discrepancies": [
+    {
+      "lineId": "line-medicines",
+      "insurerDeducted": 8250,
+      "policyAllows": 0,
+      "difference": 8250,
+      "clauseId": "SP-3.3",
+      "clauseQuote": "Clause 3.2 does not apply to pharmacy, medicines and diagnostic investigations."
+    },
+    {
+      "lineId": "line-consumables",
+      "insurerDeducted": 5500,
+      "policyAllows": 4000,
+      "difference": 1500,
+      "clauseId": "SP-3.3",
+      "clauseQuote": "Clause 3.2 does not apply to pharmacy, medicines and diagnostic investigations."
+    }
+  ],
+  "totalDiscrepancyAmount": 9750,
+  "statutoryGround": "IRDAI Master Circular 2020 (Ref: IRDAI/HLT/CIR/GDL/61/04/2020 Section 5, Clause 19)"
+}

@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Surfaces */
+  --paper: #F5F0E6;       /* base background — warm off-white */
+  --paper-2: #EDE6D6;     /* card/document surface */
+
+  /* Ink */
+  --ink: #14110F;         /* primary text — near-black */
+  --ink-2: #4A433C;       /* secondary text */
+
+  /* Semantic color — strictly enforced */
+  --red: #C8372D;         /* lost money ONLY — deductions, shortfall */
+  --red-soft: #F3D9D5;    /* red highlight backgrounds */
+  --green: #1F6B4A;       /* payable amounts ONLY */
+  --green-soft: #D6E8DE;  /* green highlight backgrounds */
+
+  /* Structure */
+  --rule: #D9D0BE;        /* dividers, borders */
+
+  /* Motion */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* Typography Fallbacks */
+  --font-display: 'Instrument Serif', 'Fraunces', serif;
+  --font-ui: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+}
+
+/* User Selection Highlighting */
+::selection {
+  background: var(--red-soft);
+  color: var(--ink);
+}
+
+/* Document Body Baseline */
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  margin: 0;
+  padding: 0;
+}
+
+/* Tabular numerals for all monetary amounts */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus visible rings adhering to design standards */
+*:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Document Paper Texture */
+.paper-grain {
+  background-color: var(--paper);
+  background-image: radial-gradient(rgba(20, 17, 15, 0.035) 1px, transparent 0);
+  background-size: 20px 20px;
+}

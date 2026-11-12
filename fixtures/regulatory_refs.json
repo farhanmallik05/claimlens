@@ -1,0 +1,54 @@
+{
+  "references": [
+    {
+      "id": "IRDAI-2019-EXCLUSIONS",
+      "circularNo": "IRDAI/HLT/REG/CIR/193/09/2019",
+      "date": "2019-09-27",
+      "authority": "Insurance Regulatory and Development Authority of India (IRDAI)",
+      "title": "Guidelines on Standardization of Exclusions in Health Insurance Contracts",
+      "section": "Section 4 & Annexure 1",
+      "summary": "Mandates standardized list of non-payable items across all health insurance products. Distinguishes non-payable administrative charges from payable clinical consumables.",
+      "relevance": "Provides legal basis for Annexure A non-payable deductions (Clause SP-4.1)."
+    },
+    {
+      "id": "IRDAI-2020-PROPORTIONATE",
+      "circularNo": "IRDAI/HLT/CIR/GDL/61/04/2020",
+      "date": "2020-04-20",
+      "authority": "Insurance Regulatory and Development Authority of India (IRDAI)",
+      "title": "Master Circular on Standardization of Health Insurance Products",
+      "section": "Section 5, Clause 19",
+      "summary": "Expressly prohibits insurers from applying proportionate room-rent deductions to ICU/ICCU charges, fixed-fee surgical implants, diagnostic investigations, and medicines/pharmacy.",
+      "relevance": "Primary statutory citation used in Appeal Drafter (Finisher B) to overturn illegal ₹9,750 pharmacy cut."
+    },
+    {
+      "id": "IRDAI-2016-REG12",
+      "circularNo": "Notification No. IRDAI/Reg/8/125/2016",
+      "date": "2016-07-12",
+      "authority": "Insurance Regulatory and Development Authority of India (IRDAI)",
+      "title": "IRDAI (Health Insurance) Regulations, 2016",
+      "section": "Regulation 12 (Discharge Settlement Transparency)",
+      "summary": "Mandates insurers and TPAs to furnish itemized deduction summaries with specific policy clause citations within 2 hours of hospital discharge request.",
+      "relevance": "Empowers policyholders to demand transparent line-item audit statements pre-discharge."
+    },
+    {
+      "id": "IRDAI-AR-2024",
+      "circularNo": "IRDAI Annual Report 2023-24",
+      "date": "2024-11-01",
+      "authority": "Insurance Regulatory and Development Authority of India (IRDAI)",
+      "title": "IRDAI Annual Report 2023-24",
+      "section": "Part II, Chapter 4, Table 4.8, Page 84",
+      "summary": "Records 57 crore lives covered, ₹26,038 crore disallowed/repudiated claims, and 71.2% aggregate settlement ratio in FY24.",
+      "relevance": "Authoritative primary source for Scene 2 problem statistics."
+    },
+    {
+      "id": "OMBUDSMAN-RULES-2017",
+      "circularNo": "Ministry of Finance GSR 413(E)",
+      "date": "2017-04-25",
+      "authority": "Executive Council of Insurers / Insurance Ombudsman",
+      "title": "Insurance Ombudsman Rules, 2017",
+      "section": "Rule 13 (Manner of filing complaint) & Rule 14",
+      "summary": "Provides free statutory arbitration for insurance claim shortfalls up to ₹30 lakh after rejection or 30 days of insurer inaction.",
+      "relevance": "Defines the formal escalation pathway embedded in the Appeal Letter."
+    }
+  ]
+}

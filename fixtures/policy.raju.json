@@ -1,0 +1,60 @@
+{
+  "id": "demo-001",
+  "insurer": "Demo Assure",
+  "planName": "SafeCare Plus (Demo)",
+  "sumInsured": 500000,
+  "sumInsuredClauseId": "SP-2.1",
+  "roomRent": {
+    "mode": "pctSI",
+    "value": 1,
+    "clauseId": "SP-3.1"
+  },
+  "proportionate": {
+    "enabled": true,
+    "appliesTo": [
+      "professional"
+    ],
+    "clauseId": "SP-3.2"
+  },
+  "nonPayable": {
+    "clauseId": "SP-4.1"
+  },
+  "copay": {
+    "pct": 0,
+    "order": "afterCap",
+    "clauseId": "SP-5.1"
+  },
+  "priorClaimsPaid": 0,
+  "clauses": {
+    "SP-2.1": {
+      "page": 1,
+      "heading": "Sum Insured",
+      "text": "The maximum amount payable in a policy year is the Sum Insured shown in the Schedule."
+    },
+    "SP-3.1": {
+      "page": 1,
+      "heading": "Room Rent Limit",
+      "text": "Room rent is payable up to 1% of the Sum Insured per day. Any room charged above this limit is subject to clause 3.2."
+    },
+    "SP-3.2": {
+      "page": 1,
+      "heading": "Proportionate Deduction",
+      "text": "Where a room is availed above the limit in 3.1, professional fees, operation theatre and nursing charges are payable in the same proportion as the eligible room rent bears to the actual room rent."
+    },
+    "SP-3.3": {
+      "page": 1,
+      "heading": "Exempt Expenses",
+      "text": "Clause 3.2 does not apply to pharmacy, medicines and diagnostic investigations."
+    },
+    "SP-4.1": {
+      "page": 2,
+      "heading": "Non-Payable Items",
+      "text": "Items listed in Annexure A (e.g. disposable gloves, administrative and registration charges) are not payable."
+    },
+    "SP-5.1": {
+      "page": 2,
+      "heading": "Co-payment",
+      "text": "This policy carries no co-payment."
+    }
+  }
+}

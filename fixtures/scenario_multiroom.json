@@ -1,0 +1,133 @@
+{
+  "scenario": "multi_room_icu_deluxe",
+  "name": "Scenario S2: Multi-Room Stay (ICU + Deluxe)",
+  "policy": {
+    "id": "demo-001",
+    "insurer": "Demo Assure",
+    "planName": "SafeCare Plus (Demo)",
+    "sumInsured": 500000,
+    "sumInsuredClauseId": "SP-2.1",
+    "roomRent": {
+      "mode": "pctSI",
+      "value": 1,
+      "clauseId": "SP-3.1"
+    },
+    "proportionate": {
+      "enabled": true,
+      "appliesTo": [
+        "professional"
+      ],
+      "clauseId": "SP-3.2"
+    },
+    "nonPayable": {
+      "clauseId": "SP-4.1"
+    },
+    "copay": {
+      "pct": 0,
+      "order": "afterCap",
+      "clauseId": "SP-5.1"
+    },
+    "priorClaimsPaid": 0,
+    "clauses": {
+      "SP-2.1": {
+        "page": 1,
+        "heading": "Sum Insured",
+        "text": "The maximum amount payable in a policy year is the Sum Insured shown in the Schedule."
+      },
+      "SP-3.1": {
+        "page": 1,
+        "heading": "Room Rent Limit",
+        "text": "Room rent is payable up to 1% of the Sum Insured per day (₹5,000/day). Any room charged above this limit is subject to clause 3.2."
+      },
+      "SP-3.2": {
+        "page": 1,
+        "heading": "Proportionate Deduction",
+        "text": "Where a room is availed above the limit in 3.1, professional fees, operation theatre and nursing charges are payable in the same proportion as the eligible room rent bears to the actual room rent."
+      },
+      "SP-3.3": {
+        "page": 1,
+        "heading": "Exempt Expenses",
+        "text": "Clause 3.2 does not apply to pharmacy, medicines and diagnostic investigations. ICU is not subject to room rent cap per IRDAI directive."
+      },
+      "SP-4.1": {
+        "page": 2,
+        "heading": "Non-Payable Items",
+        "text": "Items listed in Annexure A are not payable."
+      },
+      "SP-5.1": {
+        "page": 2,
+        "heading": "Co-payment",
+        "text": "This policy carries no co-payment."
+      }
+    }
+  },
+  "bill": {
+    "id": "bill-multi-001",
+    "patientAlias": "Cardiac Transfer Patient",
+    "hospital": "Apollo Hospitals",
+    "days": 5,
+    "lines": [
+      {
+        "id": "line-icu",
+        "category": "room",
+        "label": "Room - ICU",
+        "qty": 2,
+        "rate": 15000,
+        "amount": 30000
+      },
+      {
+        "id": "line-deluxe",
+        "category": "room",
+        "label": "Room - Deluxe",
+        "qty": 3,
+        "rate": 8000,
+        "amount": 24000
+      },
+      {
+        "id": "line-cardio",
+        "category": "professional",
+        "label": "Cardiologist Fee",
+        "qty": 1,
+        "rate": 50000,
+        "amount": 50000
+      },
+      {
+        "id": "line-anesthesia",
+        "category": "professional",
+        "label": "Anesthesia Charges",
+        "qty": 1,
+        "rate": 20000,
+        "amount": 20000
+      },
+      {
+        "id": "line-pharmacy",
+        "category": "pharmacy",
+        "label": "Medicines & Injections",
+        "qty": 1,
+        "rate": 25000,
+        "amount": 25000
+      }
+    ]
+  },
+  "expected": {
+    "weightedRoomRate": 10800,
+    "billed": 149000,
+    "insurerPays": 102407,
+    "youPay": 46593,
+    "totalDeductions": 46593,
+    "deductionsBreakdown": {
+      "roomCut": 9000,
+      "professionalCut": 37593,
+      "nonPayable": 0,
+      "copay": 0,
+      "siClamp": 0
+    },
+    "expectedLines": {
+      "line-icu": { "billed": 30000, "payable": 30000, "deducted": 0 },
+      "line-deluxe": { "billed": 24000, "payable": 15000, "deducted": 9000 },
+      "line-cardio": { "billed": 50000, "payable": 23148, "deducted": 26852 },
+      "line-anesthesia": { "billed": 20000, "payable": 9259, "deducted": 10741 },
+      "line-pharmacy": { "billed": 25000, "payable": 25000, "deducted": 0 }
+    }
+  }
+}

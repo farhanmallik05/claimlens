@@ -1,0 +1,114 @@
+{
+  "scenario": "zero_deduction_baseline",
+  "name": "Scenario S4: Zero-Deduction In-Cap Control",
+  "policy": {
+    "id": "demo-001",
+    "insurer": "Demo Assure",
+    "planName": "SafeCare Plus (Demo)",
+    "sumInsured": 500000,
+    "sumInsuredClauseId": "SP-2.1",
+    "roomRent": {
+      "mode": "pctSI",
+      "value": 1,
+      "clauseId": "SP-3.1"
+    },
+    "proportionate": {
+      "enabled": true,
+      "appliesTo": [
+        "professional"
+      ],
+      "clauseId": "SP-3.2"
+    },
+    "nonPayable": {
+      "clauseId": "SP-4.1"
+    },
+    "copay": {
+      "pct": 0,
+      "order": "afterCap",
+      "clauseId": "SP-5.1"
+    },
+    "priorClaimsPaid": 0,
+    "clauses": {
+      "SP-2.1": {
+        "page": 1,
+        "heading": "Sum Insured",
+        "text": "The maximum amount payable in a policy year is the Sum Insured shown in the Schedule."
+      },
+      "SP-3.1": {
+        "page": 1,
+        "heading": "Room Rent Limit",
+        "text": "Room rent is payable up to 1% of the Sum Insured per day."
+      },
+      "SP-3.2": {
+        "page": 1,
+        "heading": "Proportionate Deduction",
+        "text": "Proportionate deduction on professional charges when room limit is exceeded."
+      },
+      "SP-4.1": {
+        "page": 2,
+        "heading": "Non-Payable Items",
+        "text": "Items listed in Annexure A are not payable."
+      },
+      "SP-5.1": {
+        "page": 2,
+        "heading": "Co-payment",
+        "text": "This policy carries no co-payment."
+      }
+    }
+  },
+  "bill": {
+    "id": "bill-clean-001",
+    "patientAlias": "Suresh Kumar",
+    "hospital": "Fortis Hospital",
+    "days": 3,
+    "lines": [
+      {
+        "id": "line-room",
+        "category": "room",
+        "label": "Room - Single AC",
+        "qty": 3,
+        "rate": 5000,
+        "amount": 15000
+      },
+      {
+        "id": "line-surgeon",
+        "category": "professional",
+        "label": "Surgeon Fee",
+        "qty": 1,
+        "rate": 25000,
+        "amount": 25000
+      },
+      {
+        "id": "line-nursing",
+        "category": "professional",
+        "label": "Nursing & Care",
+        "qty": 3,
+        "rate": 1500,
+        "amount": 4500
+      },
+      {
+        "id": "line-meds",
+        "category": "pharmacy",
+        "label": "Medicines & Antibiotics",
+        "qty": 1,
+        "rate": 12000,
+        "amount": 12000
+      },
+      {
+        "id": "line-diagnostics",
+        "category": "diagnostics",
+        "label": "Diagnostics & Pathology",
+        "qty": 1,
+        "rate": 6500,
+        "amount": 6500
+      }
+    ]
+  },
+  "expected": {
+    "billed": 63000,
+    "insurerPays": 63000,
+    "youPay": 0,
+    "deductionsCount": 0,
+    "deductions": []
+  }
+}
