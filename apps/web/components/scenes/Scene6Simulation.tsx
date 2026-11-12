@@ -155,19 +155,21 @@ export function Scene6Simulation() {
               </div>
 
               {/* Slider */}
-              <input
-                type="range"
-                min={1000}
-                max={15000}
-                step={500}
-                value={roomRate}
-                onChange={(e) => setRoomRate(parseInt(e.target.value, 10))}
-                className="w-full accent-ink cursor-pointer h-2 bg-rule rounded-lg appearance-none"
-                aria-label="Room rent rate per day slider"
-                aria-valuetext={`₹${roomRate.toLocaleString('en-IN')} a day, ${
-                  isOverCap ? `₹${(roomRate - capRate).toLocaleString('en-IN')} over cap` : 'within cap'
-                }`}
-              />
+              <div className="relative flex items-center min-h-[44px]">
+                <input
+                  type="range"
+                  min={1000}
+                  max={15000}
+                  step={500}
+                  value={roomRate}
+                  onChange={(e) => setRoomRate(parseInt(e.target.value, 10))}
+                  className="w-full accent-ink cursor-pointer h-2 bg-rule rounded-lg appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
+                  aria-label="Room rent rate per day slider"
+                  aria-valuetext={`₹${roomRate.toLocaleString('en-IN')} a day, ${
+                    isOverCap ? `₹${(roomRate - capRate).toLocaleString('en-IN')} over cap` : 'within cap'
+                  }`}
+                />
+              </div>
 
               {/* Tier Quick-Buttons */}
               <div className="grid grid-cols-3 sm:grid-cols-5 gap-1 pt-1">
@@ -179,7 +181,7 @@ export function Scene6Simulation() {
                       type="button"
                       onClick={() => setRoomRate(tier.rate)}
                       className={cn(
-                        'px-1.5 py-1 text-[11px] font-mono rounded border text-center transition-all min-h-[44px] sm:min-h-[32px] flex flex-col justify-center items-center cursor-pointer',
+                        'px-1.5 py-1 text-[11px] font-mono rounded border text-center transition-all min-h-[44px] flex flex-col justify-center items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink',
                         isCurrent
                           ? 'bg-ink text-paper border-ink font-bold shadow-xs'
                           : 'bg-paper text-ink-2 border-rule hover:bg-paper-2 hover:text-ink'
@@ -202,16 +204,18 @@ export function Scene6Simulation() {
                 </span>
                 <span className="text-sm font-bold text-ink">{stayDays} Days</span>
               </div>
-              <input
-                type="range"
-                min={1}
-                max={14}
-                step={1}
-                value={stayDays}
-                onChange={(e) => setStayDays(parseInt(e.target.value, 10))}
-                className="w-full accent-ink cursor-pointer h-2 bg-rule rounded-lg appearance-none"
-                aria-label="Hospital stay duration in days"
-              />
+              <div className="relative flex items-center min-h-[44px]">
+                <input
+                  type="range"
+                  min={1}
+                  max={14}
+                  step={1}
+                  value={stayDays}
+                  onChange={(e) => setStayDays(parseInt(e.target.value, 10))}
+                  className="w-full accent-ink cursor-pointer h-2 bg-rule rounded-lg appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
+                  aria-label="Hospital stay duration in days"
+                />
+              </div>
               <div className="flex justify-between text-[10px] font-mono text-ink-2/60">
                 <span>1 Day</span>
                 <span>5 Days (Raju)</span>
@@ -227,16 +231,18 @@ export function Scene6Simulation() {
                   <Money amount={sumInsured} />
                 </span>
               </div>
-              <input
-                type="range"
-                min={200000}
-                max={1500000}
-                step={100000}
-                value={sumInsured}
-                onChange={(e) => setSumInsured(parseInt(e.target.value, 10))}
-                className="w-full accent-ink cursor-pointer h-2 bg-rule rounded-lg appearance-none"
-                aria-label="Policy sum insured slider"
-              />
+              <div className="relative flex items-center min-h-[44px]">
+                <input
+                  type="range"
+                  min={200000}
+                  max={1500000}
+                  step={100000}
+                  value={sumInsured}
+                  onChange={(e) => setSumInsured(parseInt(e.target.value, 10))}
+                  className="w-full accent-ink cursor-pointer h-2 bg-rule rounded-lg appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
+                  aria-label="Policy sum insured slider"
+                />
+              </div>
               <div className="flex justify-between text-[10px] font-mono text-ink-2/60">
                 <span>₹2 Lakh</span>
                 <span>₹5 Lakh (1% = ₹5,000 cap)</span>
@@ -255,7 +261,7 @@ export function Scene6Simulation() {
                   type="button"
                   onClick={() => setProportionateEnabled(!proportionateEnabled)}
                   className={cn(
-                    'w-full py-2 px-3 rounded border text-xs font-mono font-bold transition-all min-h-[44px] flex items-center justify-center cursor-pointer',
+                    'w-full py-2 px-3 rounded border text-xs font-mono font-bold transition-all min-h-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink',
                     proportionateEnabled
                       ? 'bg-ink text-paper border-ink'
                       : 'bg-paper text-ink-2 border-rule hover:bg-paper-2'
@@ -277,7 +283,7 @@ export function Scene6Simulation() {
                       type="button"
                       onClick={() => setCopayPct(pct)}
                       className={cn(
-                        'flex-1 py-2 text-xs font-mono rounded border text-center transition-all min-h-[44px] flex items-center justify-center cursor-pointer',
+                        'flex-1 py-2 text-xs font-mono rounded border text-center transition-all min-h-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink',
                         copayPct === pct
                           ? 'bg-ink text-paper border-ink font-bold'
                           : 'bg-paper text-ink-2 border-rule hover:bg-paper-2'

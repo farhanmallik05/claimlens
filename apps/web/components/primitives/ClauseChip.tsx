@@ -15,14 +15,28 @@ export function ClauseChip({
   peeled = false,
   active = false,
   className,
+  onKeyDown,
   ...props
 }: ClauseChipProps) {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      // Allow default button click behavior or trigger explicit click
+      if (props.onClick) {
+        props.onClick(e as unknown as React.MouseEvent<HTMLButtonElement>);
+      }
+    }
+    if (onKeyDown) {
+      onKeyDown(e);
+    }
+  };
+
   return (
     <button
       type="button"
+      onKeyDown={handleKeyDown}
       className={cn(
-        'group inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded border transition-all duration-200 select-none cursor-pointer',
-        'focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 min-h-[36px] sm:min-h-[32px]',
+        'group inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono rounded border transition-all duration-200 select-none cursor-pointer',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 min-h-[44px]',
         active
           ? 'bg-ink text-paper border-ink font-semibold shadow-md translate-y-[-1px]'
           : peeled

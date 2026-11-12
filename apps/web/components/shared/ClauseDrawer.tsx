@@ -113,11 +113,13 @@ export function ClauseDrawer({
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
+        e.preventDefault();
+        e.stopPropagation();
         handleClose();
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
   }, [isOpen, handleClose]);
 
   // Lock body scroll when open
@@ -177,7 +179,7 @@ export function ClauseDrawer({
           <button
             onClick={handleClose}
             type="button"
-            className="p-2 rounded-md hover:bg-paper text-ink-2 hover:text-ink border border-transparent hover:border-rule transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+            className="p-2 rounded-md hover:bg-paper text-ink-2 hover:text-ink border border-transparent hover:border-rule transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
             aria-label="Close clause inspector"
           >
             <X className="w-5 h-5" />
@@ -191,7 +193,7 @@ export function ClauseDrawer({
               onClick={() => setActivePage(1)}
               type="button"
               className={cn(
-                'px-3 py-1.5 rounded transition-all min-h-[44px] sm:min-h-[36px] flex items-center cursor-pointer',
+                'px-3 py-1.5 rounded transition-all min-h-[44px] sm:min-h-[36px] flex items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink',
                 activePage === 1
                   ? 'bg-ink text-paper font-semibold shadow-xs'
                   : 'text-ink-2 hover:text-ink hover:bg-paper-2'
@@ -203,7 +205,7 @@ export function ClauseDrawer({
               onClick={() => setActivePage(2)}
               type="button"
               className={cn(
-                'px-3 py-1.5 rounded transition-all min-h-[44px] sm:min-h-[36px] flex items-center cursor-pointer',
+                'px-3 py-1.5 rounded transition-all min-h-[44px] sm:min-h-[36px] flex items-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink',
                 activePage === 2
                   ? 'bg-ink text-paper font-semibold shadow-xs'
                   : 'text-ink-2 hover:text-ink hover:bg-paper-2'

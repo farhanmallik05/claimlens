@@ -33,7 +33,7 @@ export function Button({
   };
 
   const sizeClasses = {
-    sm: 'text-xs px-3 py-1.5 min-h-[36px]',
+    sm: 'text-xs px-3 py-1.5 min-h-[44px]',
     md: 'text-sm px-4 py-2 min-h-[44px]',
     lg: 'text-base px-6 py-3 min-h-[48px]',
   };
@@ -42,7 +42,7 @@ export function Button({
     <button
       className={cn(
         'inline-flex items-center justify-center gap-2 font-ui font-medium rounded border transition-all duration-150 select-none cursor-pointer',
-        'focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2',
         'disabled:opacity-50 disabled:pointer-events-none',
         variantClasses[variant],
         sizeClasses[size],
