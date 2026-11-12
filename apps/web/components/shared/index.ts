@@ -5,3 +5,4 @@ export * from './ClauseDrawer';
 export * from './HowItWorks';
 export * from './WhyUsTable';
 export * from './ImpactMetrics';
+export * from './ShortcutsModal';
