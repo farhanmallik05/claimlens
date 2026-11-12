@@ -263,7 +263,7 @@ export function TourPill() {
                     type="button"
                     onClick={handlePrev}
                     disabled={currentStepIndex === 0}
-                    className="p-1.5 rounded hover:bg-ink/5 disabled:opacity-30 disabled:pointer-events-none text-ink transition-colors"
+                    className="p-2 rounded hover:bg-ink/5 disabled:opacity-30 disabled:pointer-events-none text-ink transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
                     aria-label="Previous scene (P)"
                     title="Previous (P / ←)"
                   >
@@ -273,7 +273,7 @@ export function TourPill() {
                   <button
                     type="button"
                     onClick={togglePause}
-                    className="p-1.5 rounded bg-ink/10 hover:bg-ink/20 text-ink transition-colors font-mono text-xs inline-flex items-center gap-1 px-2.5"
+                    className="p-2 rounded bg-ink/10 hover:bg-ink/20 text-ink transition-colors font-mono text-xs inline-flex items-center justify-center gap-1.5 px-3 min-h-[44px] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
                     aria-label={isPaused ? 'Resume tour (Space)' : 'Pause tour (Space)'}
                     title="Toggle Pause (Space)"
                   >
@@ -294,7 +294,7 @@ export function TourPill() {
                     type="button"
                     onClick={handleNext}
                     disabled={currentStepIndex === TOUR_STEPS.length - 1}
-                    className="p-1.5 rounded hover:bg-ink/5 disabled:opacity-30 disabled:pointer-events-none text-ink transition-colors"
+                    className="p-2 rounded hover:bg-ink/5 disabled:opacity-30 disabled:pointer-events-none text-ink transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
                     aria-label="Next scene (N)"
                     title="Next (N / →)"
                   >
@@ -306,7 +306,7 @@ export function TourPill() {
                   <button
                     type="button"
                     onClick={() => setShowShortcuts(true)}
-                    className="text-xs text-ink-3 hover:text-ink font-mono px-2 py-1 rounded hover:bg-ink/5"
+                    className="text-xs text-ink-3 hover:text-ink font-mono px-2.5 py-1.5 rounded hover:bg-ink/5 min-h-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
                     title="Keyboard shortcuts (?)"
                   >
                     Shortcuts (?)
@@ -315,7 +315,7 @@ export function TourPill() {
                   <button
                     type="button"
                     onClick={stopTour}
-                    className="p-1.5 rounded bg-red/10 text-red hover:bg-red/20 transition-colors"
+                    className="p-2 rounded bg-red/10 text-red hover:bg-red/20 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
                     aria-label="Exit tour (Esc)"
                     title="Exit Tour (Esc)"
                   >

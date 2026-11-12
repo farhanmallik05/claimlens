@@ -235,7 +235,7 @@ export function Scene3Ripple() {
                 aria-valuetext={`₹${roomRate.toLocaleString('en-IN')} a day, ${
                   isOverCap ? `₹${(roomRate - activeCap).toLocaleString('en-IN')} over cap` : 'within cap'
                 }`}
-                className="w-full h-3 bg-paper rounded-lg appearance-none cursor-pointer accent-ink border border-rule focus-visible:outline-ink"
+                className="w-full h-3 bg-paper rounded-lg appearance-none cursor-pointer accent-ink border border-rule focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
               />
             </div>
 
@@ -249,7 +249,7 @@ export function Scene3Ripple() {
                     type="button"
                     onClick={() => handleTierSelect(tier.rate)}
                     className={cn(
-                      'px-2 py-1.5 text-xs font-mono rounded border transition-all cursor-pointer text-center select-none',
+                      'px-2 py-1.5 text-xs font-mono rounded border transition-all cursor-pointer text-center select-none min-h-[44px] flex flex-col justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink',
                       isSelected
                         ? 'bg-ink text-paper border-ink font-semibold shadow-sm'
                         : 'bg-paper text-ink-2 border-rule hover:bg-paper-2 hover:border-ink-2/50'

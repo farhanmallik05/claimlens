@@ -36,9 +36,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable} overflow-x-hidden`}
     >
-      <body className="bg-paper text-ink font-ui antialiased min-h-screen selection:bg-red-soft selection:text-ink">
+      <body className="bg-paper text-ink font-ui antialiased min-h-screen selection:bg-red-soft selection:text-ink overflow-x-hidden">
         {children}
       </body>
     </html>
