@@ -6,9 +6,13 @@ on:
   pull_request:
     branches: [main, master]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  engine:
-    name: Engine Tests (Vitest)
+  engine-tests:
+    name: Engine Tests (Vitest & Typecheck)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -34,7 +38,7 @@ jobs:
       - name: Run Engine Tests
         run: pnpm --filter @claimlens/engine test
 
-  web:
+  web-build:
     name: Web App Verification (Typecheck, Lint, Build)
     runs-on: ubuntu-latest
     steps:
@@ -61,11 +65,11 @@ jobs:
       - name: Lint Web
         run: pnpm --filter web lint
 
-      - name: Build Web
+      - name: Build Web Application
         run: pnpm --filter web build
 
-  api:
-    name: API Healthcheck (Pytest)
+  api-tests:
+    name: API Gateway Verification (Pytest 13/13)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -86,6 +90,38 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Pytest
-        run: |
-          pytest tests/test_healthz.py -v
+      - name: Run Pytest Suite
+        run: pytest tests -v
+
+  e2e-suite:
+    name: E2E Invariants & Zero-Float Harness (148/148)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Engine Package
+        run: pnpm --filter @claimlens/engine build
+
+      - name: Validate System Metrics & DoD Invariants
+        run: node scripts/validate_metrics.js
+
+      - name: Run Master 4-Tier E2E Suite (148/148)
+        run: node scripts/run_e2e_suite.js
+
+      - name: Run 2,112-Run Challenger Invariant Harness (FR-7, FR-8)
+        run: node scripts/verify_challenger_invariants.js
