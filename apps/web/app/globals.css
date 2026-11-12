@@ -24,9 +24,9 @@
   --ease: cubic-bezier(.22, 1, .36, 1);
 
   /* Typography Fallbacks */
-  --font-display: 'Instrument Serif', 'Fraunces', serif;
-  --font-ui: 'Geist', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-display: var(--font-display), 'Instrument Serif', 'Fraunces', serif;
+  --font-ui: var(--font-geist-sans), 'Geist', system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), 'Geist Mono', ui-monospace, monospace;
 }
 
 /* User Selection Highlighting */
@@ -63,3 +63,39 @@ body {
   background-image: radial-gradient(rgba(20, 17, 15, 0.035) 1px, transparent 0);
   background-size: 20px 20px;
 }
+
+/* Stamp Slam Animation */
+@keyframes stamp-slam {
+  0% {
+    opacity: 0;
+    transform: scale(1.6) rotate(var(--stamp-angle, -3deg));
+  }
+  70% {
+    opacity: 1;
+    transform: scale(0.95) rotate(var(--stamp-angle, -3deg));
+  }
+  85% {
+    transform: scale(1.03) rotate(var(--stamp-angle, -3deg));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--stamp-angle, -3deg));
+  }
+}
+
+.animate-stamp-slam {
+  animation: stamp-slam 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes screen-shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(1px, -1px); }
+  50% { transform: translate(-1px, 1px); }
+  75% { transform: translate(1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+.screen-shake-1px {
+  animation: screen-shake 0.12s ease-in-out;
+}
+
