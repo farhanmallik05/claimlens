@@ -130,6 +130,47 @@ const tier3Module = require(path.join(rootDir, 'tests/e2e/tier3-pairwise.test.js
 const pairwiseRuns = tier3Module.pairwiseRuns;
 const buildTestCase = tier3Module.buildTestCase;
 
+// Programmatically calculate 2-way combinatorial matrix coverage
+function calculateTwoWayCoverage(runs, factorsObj) {
+  const factorKeys = Object.keys(factorsObj);
+  const factorLevels = {};
+  for (const k of factorKeys) {
+    factorLevels[k] = Object.keys(factorsObj[k]);
+  }
+
+  let totalCombinations = 0;
+  let coveredCombinations = 0;
+  const missingCombinations = [];
+
+  for (let i = 0; i < factorKeys.length; i++) {
+    for (let j = i + 1; j < factorKeys.length; j++) {
+      const f1 = factorKeys[i];
+      const f2 = factorKeys[j];
+      for (const l1 of factorLevels[f1]) {
+        for (const l2 of factorLevels[f2]) {
+          totalCombinations++;
+          const covered = runs.some(r => r[f1] === l1 && r[f2] === l2);
+          if (covered) {
+            coveredCombinations++;
+          } else {
+            missingCombinations.push(`${f1}=${l1} & ${f2}=${l2}`);
+          }
+        }
+      }
+    }
+  }
+
+  const coveragePct = Number(((coveredCombinations / totalCombinations) * 100).toFixed(2));
+  return {
+    totalCombinations,
+    coveredCombinations,
+    coveragePct,
+    missingCombinations
+  };
+}
+
+const matrixCoverage = calculateTwoWayCoverage(pairwiseRuns, tier3Module.factors);
+
 let tier3Passed = 0;
 let tier3Failed = 0;
 
@@ -151,6 +192,29 @@ for (const run of pairwiseRuns) {
       assert.ok(d.formula);
       assert.equal(d.formula.result, d.amount);
     }
+
+    // Factor-Specific Assertions
+    if (run.A === 'under_cap' || run.A === 'at_cap') {
+      assert.equal(res.deductions.filter(d => d.ruleId === 'ROOM_CAP').length, 0);
+      assert.equal(res.deductions.filter(d => d.ruleId === 'PROPORTIONATE').length, 0);
+    }
+    if (run.A === 'over_cap') {
+      assert.ok(res.deductions.some(d => d.ruleId === 'ROOM_CAP'), 'Must have ROOM_CAP deduction');
+      if (run.B !== 'disabled') {
+        assert.ok(res.deductions.some(d => d.ruleId === 'PROPORTIONATE'), 'Must have PROPORTIONATE deduction');
+      }
+    }
+    if (run.C !== 'zero') {
+      assert.ok(res.deductions.some(d => d.ruleId === 'COPAY'), 'Must have COPAY deduction');
+    }
+    if (run.D !== 'none') {
+      assert.ok(res.deductions.some(d => d.ruleId === 'NON_PAYABLE'), 'Must have NON_PAYABLE deduction');
+    }
+    if (run.E === 'clamped') {
+      assert.ok(res.insurerPays <= policy.sumInsured);
+      assert.ok(res.deductions.some(d => d.ruleId === 'SI_CLAMP'), 'Must have SI_CLAMP deduction');
+    }
+
     tier3Passed++;
   } catch (err) {
     tier3Failed++;
@@ -158,7 +222,7 @@ for (const run of pairwiseRuns) {
     console.error(`    ${err.message}`);
   }
 }
-console.log(`  ${colors.green}✔ Tier 3 Completed:${colors.reset} ${tier3Passed}/${pairwiseRuns.length} orthogonal runs passed (100% 2-way matrix coverage)`);
+console.log(`  ${colors.green}✔ Tier 3 Completed:${colors.reset} ${tier3Passed}/${pairwiseRuns.length} orthogonal runs passed (${matrixCoverage.coveragePct}% 2-way matrix coverage: ${matrixCoverage.coveredCombinations}/${matrixCoverage.totalCombinations})`);
 
 // -----------------------------------------------------------------------------
 // Phase 5: Tier 4 Clinical Workflow Scenarios (S1 - S5)
@@ -336,7 +400,10 @@ const resultsData = {
       totalRuns: pairwiseRuns.length,
       passed: tier3Passed,
       failed: tier3Failed,
-      matrixCoverage: '100% 2-way'
+      matrixCoverage: `${matrixCoverage.coveragePct}% 2-way`,
+      matrixCoveragePct: matrixCoverage.coveragePct,
+      coveredCombinations: matrixCoverage.coveredCombinations,
+      totalCombinations: matrixCoverage.totalCombinations
     },
     tier4_scenarios: {
       totalScenarios: scenariosList.length,
@@ -372,7 +439,7 @@ console.log(`${colors.bright}                      CLAIMLENS E2E TEST SUITE REPO
 console.log(`${colors.cyan}================================================================================${colors.reset}`);
 console.log(`  Tier 1 (Feature Coverage):        ${colors.green}${tier1Passed} / ${tier1Cases.length} passed${colors.reset} (20 Features)`);
 console.log(`  Tier 2 (Boundary & Corner Cases): ${colors.green}${tier2Passed} / ${tier2Cases.length} passed${colors.reset}`);
-console.log(`  Tier 3 (Orthogonal Pairwise):     ${colors.green}${tier3Passed} / ${pairwiseRuns.length} passed${colors.reset} (100% 2-way)`);
+console.log(`  Tier 3 (Orthogonal Pairwise):     ${colors.green}${tier3Passed} / ${pairwiseRuns.length} passed${colors.reset} (${matrixCoverage.coveragePct}% 2-way: ${matrixCoverage.coveredCombinations}/${matrixCoverage.totalCombinations})`);
 console.log(`  Tier 4 (Clinical Scenarios):      ${colors.green}${tier4Passed} / ${scenariosList.length} passed${colors.reset} (S1-S5)`);
 console.log(`  Invariants (FR-7, FR-8, FR-12):   ${colors.green}200 runs passed${colors.reset} (Zero float leakage)`);
 console.log(`--------------------------------------------------------------------------------`);
